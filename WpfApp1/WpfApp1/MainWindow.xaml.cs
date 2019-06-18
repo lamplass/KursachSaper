@@ -25,7 +25,7 @@ namespace WpfApp1
         BitmapImage mine; // картнка мины 
         Generator gen = new Generator(); // генерирует поле 
         int kolvopust = 0; // количество пустых
-        int kolvomin = 5; // сколько мин в игре 
+        int kolvomin = 1; // сколько мин в игре 
         System.Windows.Threading.DispatcherTimer Timer;
         DateTime start;
         string nameuser;
@@ -69,8 +69,8 @@ namespace WpfApp1
 
         private void b1_Click(object sender, RoutedEventArgs e)
         {
-           
-
+            Lbshow.Visibility = Visibility;
+            tabll.Visibility = Visibility;
 
             m_dbConnection = new SQLiteConnection("Data Source=" + db_name + ";Version=3;");
             //открытие соединения с базой данных

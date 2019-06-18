@@ -56,7 +56,7 @@ namespace WpfApp1
             if (n > 10)
                 throw new ArgumentException("МНОГО МИН");
 
-            if (n < 5)
+            if (n < 1)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
