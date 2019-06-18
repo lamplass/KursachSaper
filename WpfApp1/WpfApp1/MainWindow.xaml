@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="177" Width="250" Background="#FFFFFFFF">
+        Title="Старпёр" Height="177" Width="250" Background="#FFFFFFFF" Icon="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\bomb\bomb.jpg">
+    
     <Grid Margin="0,0,2,-31">
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
