@@ -7,20 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Background="#FFFFFFFF">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260*"/>
-            <ColumnDefinition Width="257*"/>
+            <ColumnDefinition Width="515*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="b1" Content="СТАРТ!" HorizontalAlignment="Left" Height="37" Margin="195,22,0,0" VerticalAlignment="Top" Width="97" Click="b1_Click" FontWeight="Bold" Background="#FF0000" Grid.ColumnSpan="2"/>
-        <UniformGrid Name="setka" Margin="0,10,0,0" Grid.ColumnSpan="2">
+        <Button x:Name="b1" Content="СТАРТ!" Margin="69,54,0,0" Click="b1_Click" FontWeight="Bold" Background="#FF0000" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top"/>
+        <UniformGrid Name="setka" Margin="157,30,159,40" Grid.RowSpan="2"/>
+        <Label x:Name="lbtimer" Content="0:0" Margin="91,9,376,0" FontSize="24" FontFamily="Showcard Gothic" Height="39"  VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="lbname" Content="Имя" HorizontalAlignment="Right" Margin="0,19,429,0" VerticalAlignment="Top" RenderTransformOrigin="0.481,0.419" Height="43" Width="54" Grid.Row="1"/>
+        <TextBox x:Name="tbname" Margin="69,19,326,270" TextWrapping="Wrap" Grid.Row="1"/>
 
 
-        </UniformGrid>
-        <Label x:Name="lbtimer" Content="00:00:00" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="lbname" Content="Имя" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="74,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Butrecords" Content="Посмотреть рекорды" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="138" Height="23" Click="Butrecords_Click"/>
-        <ListBox x:Name="Lbshow" HorizontalAlignment="Left" Height="200" Margin="51,98,0,0" VerticalAlignment="Top" Width="200" MouseLeftButtonDown="Lbshow_MouseLeftButtonDown" Visibility="Hidden"/>
+        <ListBox x:Name="Lbshow" HorizontalAlignment="Right" Height="200" Margin="0,54,10,0" VerticalAlignment="Top" Width="167" Grid.Row="1"/>
+        <Label Content="      Таблица Рекордов" Margin="0,31,8,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="27" HorizontalAlignment="Right" Width="169"/>
 
     </Grid>
 </Window>
