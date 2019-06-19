@@ -7,12 +7,10 @@ using NUnit.Framework;
 
 
 namespace WpfApp1
-{
-
+{ 
     [TestFixture]
     class tasteCase
     {
-
         [TestCase]
         public void isBroken()
         {
@@ -25,16 +23,11 @@ namespace WpfApp1
                     {  0, -1, -1, -1,  0 },
                     {  0, -1, -1, -1,  0 }
             };
-
-            //Assert.AreEqual(true, gen.isBroken(0, 0));
-            //Assert.AreEqual(false, gen.isBroken(1, 0));
             Assert.AreEqual(true, gen.isBroken(2, 2));
-
             var ex = Assert.Throws<ArgumentException>(() => gen.isBroken(-1, 15));
             Assert.That(ex.Message, Is.EqualTo("ВЫХОД ЗА ГРАНИЦУ"));
             var ex1 = Assert.Throws<ArgumentException>(() => gen.isBroken(-1, 15));
             Assert.That(ex1.Message, Is.EqualTo("ВЫХОД ЗА ГРАНИЦУ"));
-
         }
 
         [TestCase]
@@ -69,9 +62,6 @@ namespace WpfApp1
 
             var ex3 = Assert.Throws<ArgumentException>(() => gen.plantMines(2));
             Assert.That(ex3.Message, Is.EqualTo("МАЛО МИН"));
-
-
-
         }
 
         [TestCase]
@@ -86,10 +76,8 @@ namespace WpfApp1
                     {  0, -1, -1, -1,  0 },
                     {  0, -1, -1, -1,  0 }
             };
-
             gen.reveal(2, 2);
             Assert.AreEqual(-1, gen.field[2, 3]);
-
         }
 
         [TestCase]
@@ -104,12 +92,9 @@ namespace WpfApp1
                     {  0, -1,  0, -1,  0 },
                     {  0, -1, -1, -1,  0 }
             };
-
-
             gen.calculate();
             Assert.AreEqual(4, gen.field[0, 2]);
             Assert.AreEqual(8, gen.field[2, 2]);
-
         }
 
         [TestCase]
@@ -124,12 +109,9 @@ namespace WpfApp1
                     {  0, -1,  0, -1,  0 },
                     {  0, -1, -1, -1,  0 }
             };
-
             Assert.AreEqual(gen.getCell(1, 0), 0);
             Assert.AreEqual(gen.getCell(0, 3), 0);
             Assert.AreEqual(gen.getCell(1, 1), 4);
-
         }
     }
-
 }

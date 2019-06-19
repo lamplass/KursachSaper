@@ -22,7 +22,7 @@
 
 
         <ListBox x:Name="Lbshow" HorizontalAlignment="Right" Height="200" Margin="0,54,10,0" VerticalAlignment="Top" Visibility="Hidden" Width="167" Grid.Row="1"/>
-        <Label x:Name="tabll" Content="      Таблица Рекордов" Margin="0,31,8,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="27" Visibility="Hidden"  HorizontalAlignment="Right" Width="169"/>
+        <Button x:Name="tabll" Content="      Таблица Рекордов" Margin="0,29,9,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="27" Visibility="Hidden" HorizontalAlignment="Right" Width="169" Click="Tabll_Click_1"/>
         <Label x:Name="lbname" Content="Имя" HorizontalAlignment="Left" Margin="25,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="69,18,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 

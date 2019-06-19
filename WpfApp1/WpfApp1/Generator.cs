@@ -165,7 +165,6 @@ namespace WpfApp1
                     field[i, j] = 15;
                 }
         }
-
     }
 }
 
