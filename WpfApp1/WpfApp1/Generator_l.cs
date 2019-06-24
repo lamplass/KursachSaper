@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Generator
+    class Generator_l
     {
         public int[,] field;// двумерныфй массив 
         public bool isBroken(int x, int y)
@@ -54,10 +54,10 @@ namespace WpfApp1
         {/*установка мин*/
             field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
-            if (n > 10)
+            if (n > 6)
                 throw new ArgumentException("МНОГО МИН");
 
-            if (n < 5)
+            if (n < 3)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
@@ -132,7 +132,7 @@ namespace WpfApp1
             if (i >= 0 && j >= 0 && i < (field.GetLength(0)) && j < (field.GetLength(1)))/**/
                 if (field[i, j] == 0)
                 {/*вокруг мин */
-                    field[i, j] = 10;
+                    field[i, j] = 6;
 
                     reveal(i, j - 1);
                     reveal(i - 1, j);
@@ -147,23 +147,23 @@ namespace WpfApp1
                 }
                 else if (field[i, j] == 1)
                 {
-                    field[i, j] = 11;
+                    field[i, j] = 7;
                 }
                 else if (field[i, j] == 2)
                 {
-                    field[i, j] = 12;
+                    field[i, j] = 8;
                 }
                 else if (field[i, j] == 3)
                 {
-                    field[i, j] = 13;
+                    field[i, j] = 9;
                 }
                 else if (field[i, j] == 4)
                 {
-                    field[i, j] = 14;
+                    field[i, j] = 10;
                 }
                 else if (field[i, j] == 5)
                 {
-                    field[i, j] = 15;
+                    field[i, j] = 11;
                 }
 
         }
