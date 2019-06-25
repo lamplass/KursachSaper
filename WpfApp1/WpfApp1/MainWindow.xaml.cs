@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
+using System.Windows.Controls.Primitives;
+using System.Security;
 
 namespace WpfApp1
 {
@@ -32,6 +35,10 @@ namespace WpfApp1
         SQLiteConnection m_dbConnection;
         Generator_h gen1 = new Generator_h();
         Generator_l gen2 = new Generator_l();
+        SoundPlayer sp;
+        SoundPlayer sp2;
+        SoundPlayer sp3;
+        SoundPlayer sp4;
 
         int kolvomin1 = 10; // сколько мин в игре 
         int kolvomin2 = 2;
@@ -42,7 +49,11 @@ namespace WpfApp1
         {
             InitializeComponent();
             load();
-            mine = new BitmapImage(new Uri(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\bomb\bomb.jpg", UriKind.Absolute)); // ставим изображение мины
+            mine = new BitmapImage(new Uri(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images\bomb.jpg", UriKind.Absolute)); // ставим изображение мины
+            sp = new SoundPlayer(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\win.wav");//адрес звукового файла
+            sp2 = new SoundPlayer(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\loser.wav");//адрес звукового файла №2
+            sp3 = new SoundPlayer(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\start.wav");//адрес звукового файла
+            sp4 = new SoundPlayer(@"C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\game.wav");//адрес звукового файла №2
         }
 
         public void load()
@@ -238,8 +249,9 @@ namespace WpfApp1
                         (buts[i]).Content = 1;
                         kolvopust++;
                         if ((25 - kolvopust) == kolvomin)
-                        {
+                        {   
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -263,6 +275,7 @@ namespace WpfApp1
                         if ((25 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -286,6 +299,7 @@ namespace WpfApp1
                         if ((25 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -309,6 +323,7 @@ namespace WpfApp1
                         if ((25 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -332,6 +347,7 @@ namespace WpfApp1
                         if ((25 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -359,6 +375,7 @@ namespace WpfApp1
                 if ((25 - kolvopust) == kolvomin)
                 {
                     Timer.Stop();
+                    sp.Play();
                     MessageBox.Show("Вы выйграли");
                     string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                     string st;
@@ -399,6 +416,7 @@ namespace WpfApp1
                     }
                 }
                 Timer.Stop();
+                sp2.Play();
                 MessageBox.Show("Вы проиграли");
                 setka.IsEnabled = false;
             }
@@ -428,6 +446,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -451,6 +470,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -474,6 +494,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -497,6 +518,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -520,6 +542,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -543,6 +566,7 @@ namespace WpfApp1
                         if ((49 - kolvopust) == kolvomin1)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -570,6 +594,7 @@ namespace WpfApp1
                 if ((49 - kolvopust) == kolvomin1)
                 {
                     Timer.Stop();
+                    sp.Play();
                     MessageBox.Show("Вы выйграли");
                     string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                     string st;
@@ -610,6 +635,7 @@ namespace WpfApp1
                     }
                 }
                 Timer.Stop();
+                sp2.Play();
                 MessageBox.Show("Вы проиграли");
                 setka.IsEnabled = false;
             }
@@ -718,6 +744,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin2)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -741,6 +768,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin2)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -764,6 +792,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin2)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -787,6 +816,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -810,6 +840,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -833,6 +864,7 @@ namespace WpfApp1
                         if ((9 - kolvopust) == kolvomin2)
                         {
                             Timer.Stop();
+                            sp.Play();
                             MessageBox.Show("Вы выйграли");
                             string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                             string st;
@@ -860,6 +892,7 @@ namespace WpfApp1
                 if ((9 - kolvopust) == kolvomin2)
                 {
                     Timer.Stop();
+                    sp.Play();
                     MessageBox.Show("Вы выйграли");
                     string sqladd = "INSERT INTO igroki (Name,Time) VALUES ('" + nameuser + "','" + lbtimer.Content.ToString() + "')";
                     string st;
@@ -900,11 +933,26 @@ namespace WpfApp1
                     }
                 }
                 Timer.Stop();
+                sp2.Play();
                 MessageBox.Show("Вы проиграли");
                 setka.IsEnabled = false;
             }
         }
 
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            sp4.Play();
+            sp4.PlayLooping();//метод повторного воспроизведения WAV-файла.
+            stop.Visibility = Visibility;
+            bstart.Visibility = Visibility.Hidden;
+        }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            sp4.Stop();
+            stop.Visibility = Visibility.Hidden;
+            bstart.Visibility = Visibility;
+        }
     }
     
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Старпёр" Height="218" Width="250" Background="#FFFFFFFF" Icon="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\bomb\bomb.jpg">
+        Title="Старпёр" Height="218" Width="250" Background="#FFFFFFFF" Icon="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images\bomb.jpg">
 
     <Grid Margin="0,0,2,-31">
         <Grid.RowDefinitions>
@@ -27,6 +27,15 @@
         <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="69,18,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="b2" Content="Сложка" Margin="70,94,0,0" Click="b2_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
         <Button x:Name="b3" Content="Изи" Margin="70,137,0,0" Click="b3_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
-
+        <Button x:Name="bstart" Content="" Click="Start_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Width="60" Margin="25,303,0,-174.6" Height="50" Foreground="#00000000" BorderBrush="#00000000" Style="{DynamicResource On}">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images/вкл.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="stop" Content=""  Click="Stop_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Visibility="Hidden" Width="60" Margin="25,303,0,-174.6" Height="50" BorderBrush="#00000000" Foreground="#00000000" Style="{DynamicResource Off}">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images/выкл.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
