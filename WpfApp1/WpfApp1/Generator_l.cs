@@ -52,12 +52,12 @@ namespace WpfApp1
 
         public void plantMines(int n)
         {/*установка мин*/
-            field = new int[n, n];
+            //field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
-            if (n > 6)
+            if (n > 3)
                 throw new ArgumentException("МНОГО МИН");
 
-            if (n < 3)
+            if (n < 2)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
@@ -129,6 +129,8 @@ namespace WpfApp1
 
         public void reveal(int i, int j)
         {/*функция открывает вокруг поля без мин*/
+            field = new int [i,j];
+
             if (i >= 0 && j >= 0 && i < (field.GetLength(0)) && j < (field.GetLength(1)))/**/
                 if (field[i, j] == 0)
                 {/*вокруг мин */

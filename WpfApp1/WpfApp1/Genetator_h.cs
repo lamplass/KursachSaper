@@ -52,8 +52,7 @@ namespace WpfApp1
 
         public void plantMines(int n)
         {/*установка мин*/
-            field = new int[n, n];
-           
+            //field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
             if (n > 20)
                 throw new ArgumentException("МНОГО МИН");
@@ -85,8 +84,6 @@ namespace WpfApp1
                     if (field[x, y] == 0) break;//выход из цикла если поле равно 0
                 }
             }
-            if(kuku < kolvomin1)
-
         }
 
         public void calculate()
@@ -127,15 +124,17 @@ namespace WpfApp1
 
         public int getCell(int i, int j)
         {/*возвращаем знначение поля*/
+            
             return field[i, j];
         }
 
         public void reveal(int i, int j)
         {/*функция открывает вокруг поля без мин*/
+          
             if (i >= 0 && j >= 0 && i < (field.GetLength(0)) && j < (field.GetLength(1)))/**/
                 if (field[i, j] == 0)
                 {/*вокруг мин */
-                    field[i, j] = 14;
+                    field[i, j] = 6;
 
                     reveal(i, j - 1);
                     reveal(i - 1, j);
@@ -150,23 +149,23 @@ namespace WpfApp1
                 }
                 else if (field[i, j] == 1)
                 {
-                    field[i, j] = 15;
+                    field[i, j] = 7;
                 }
                 else if (field[i, j] == 2)
                 {
-                    field[i, j] = 16;
+                    field[i, j] = 8;
                 }
                 else if (field[i, j] == 3)
                 {
-                    field[i, j] = 17;
+                    field[i, j] = 9;
                 }
                 else if (field[i, j] == 4)
                 {
-                    field[i, j] = 18;
+                    field[i, j] = 10;
                 }
                 else if (field[i, j] == 5)
                 {
-                    field[i, j] = 19;
+                    field[i, j] = 11;
                 }
 
         }

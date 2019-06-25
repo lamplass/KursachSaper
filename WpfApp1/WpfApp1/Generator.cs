@@ -52,7 +52,7 @@ namespace WpfApp1
 
         public void plantMines(int n)
         {/*установка мин*/
-            field = new int[n, n];
+            //field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
             if (n > 10)
                 throw new ArgumentException("МНОГО МИН");

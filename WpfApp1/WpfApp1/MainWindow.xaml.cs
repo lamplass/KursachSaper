@@ -31,6 +31,7 @@ namespace WpfApp1
         string nameuser;
         SQLiteConnection m_dbConnection;
         Generator_h gen1 = new Generator_h();
+        Generator_l gen2 = new Generator_l();
 
         int kolvomin1 = 10; // сколько мин в игре 
         int kolvomin2 = 2;
@@ -156,7 +157,7 @@ namespace WpfApp1
             kolvopust = 0;// количество пустух клеток равно 0
             setka.Children.Clear();// 
             setka.IsEnabled = true;
-            gen.init(10);// размер поля в нашем случае 5 на 5 
+            gen1.init(7);// размер поля в нашем случае 5 на 5 
             gen1.plantMines(kolvomin1);// количество мин 
             gen1.calculate();// раставляет мины
 
@@ -169,8 +170,8 @@ namespace WpfApp1
             //толщина границ сетки
             setka.Margin = new Thickness(3);//расстояние между ними
 
-            this.Width = 5 * 250;//задаем размер окошка по ширене
-            this.Height = 6 * 120;//задаем размер по высоте
+            this.Width = 5 * 155;//задаем размер окошка по ширене
+            this.Height = 6 * 80;//задаем размер по высоте
 
             for (int i = 0; i < 7 * 7; i++)
             {
@@ -185,8 +186,8 @@ namespace WpfApp1
                 bth.Content = " ";
                 //толщина границ кнопки
                 bth.Margin = new Thickness(2);
-                //при нажатии кнопки, будет вызываться метод Btnh_Click
-                bth.Click += Btnh_Click;
+                //при нажатии кнопки, будет вызываться метод Bth_Click
+                bth.Click += Bth_Click;
                 //добавление кнопки в сетку
                 setka.Children.Add(bth);
             }
@@ -403,13 +404,13 @@ namespace WpfApp1
             }
         }
 
-        private void Btnh_Click(object sender, RoutedEventArgs e)
+        private void Bth_Click(object sender, RoutedEventArgs e)
         {
             ////получение значения лежащего в Tag
             int n = (int)((Button)sender).Tag;// узнаем номер кнопки
             if (gen1.getCell(n % 7, n / 7) == 0)
             {/*если вокруг мин нету*/
-                gen1.reveal(n % 7, n / 7);//открывает вокруг поля
+                gen2.reveal(n % 7, n / 7);//открывает вокруг поля
                 Button[] buts = new Button[setka.Children.Count];// создаем массив кнопок
                 setka.Children.CopyTo(buts, 0);// создаем пустое поле
                 for (int i = 0; i < buts.Length; i++)
@@ -564,7 +565,7 @@ namespace WpfApp1
                 ((Button)sender).Foreground = Brushes.Red;
                 ((Button)sender).FontSize = 23;
                 //запись в нажатую кнопку её номера
-                ((Button)sender).Content = gen.getCell(n % 10, n / 10);
+                ((Button)sender).Content = gen1.getCell(n % 10, n / 10);
                 kolvopust++;
                 if ((49 - kolvopust) == kolvomin1)
                 {
@@ -656,9 +657,9 @@ namespace WpfApp1
             kolvopust = 0;// количество пустух клеток равно 0
             setka.Children.Clear();// 
             setka.IsEnabled = true;
-            gen.init(3);// размер поля в нашем случае 5 на 5 
-            gen.plantMines(kolvomin);// количество мин 
-            gen.calculate();// раставляет мины
+            gen2.init(3);// размер поля в нашем случае 5 на 5 
+            gen2.plantMines(kolvomin2);// количество мин 
+            gen2.calculate();// раставляет мины
 
             //указыается количество строк и столбцов в сетке
             setka.Rows = 3;
@@ -697,15 +698,15 @@ namespace WpfApp1
         {
             ////получение значения лежащего в Tag
             int n = (int)((Button)sender).Tag;// узнаем номер кнопки
-            if (gen.getCell(n % 3, n / 3) == 0)
+            if (gen2.getCell(n % 3, n / 3) == 0)
             {/*если вокруг мин нету*/
-                gen.reveal(n % 3, n / 3);//открывает вокруг поля
+                gen2.reveal(n % 3, n / 3);//открывает вокруг поля
                 Button[] buts = new Button[setka.Children.Count];// создаем массив кнопок
                 setka.Children.CopyTo(buts, 0);// создаем пустое поле
                 for (int i = 0; i < buts.Length; i++)
                 {
                     int ind = (int)(buts[i]).Tag;//узнаем номер кнопки
-                    if (gen.getCell(ind % 3, ind / 3) == 6)
+                    if (gen2.getCell(ind % 3, ind / 3) == 6)
                     {/*проверка на победу */
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;//фон кнопки
@@ -728,7 +729,7 @@ namespace WpfApp1
                             m_dbConnection.Close();
                         }
                     }
-                    if (gen.getCell(ind % 3, ind / 3) == 7)
+                    if (gen2.getCell(ind % 3, ind / 3) == 7)
                     {
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;
@@ -751,7 +752,7 @@ namespace WpfApp1
                             m_dbConnection.Close();
                         }
                     }
-                    if (gen.getCell(ind % 3, ind / 3) == 8)
+                    if (gen2.getCell(ind % 3, ind / 3) == 8)
                     {
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;
@@ -774,7 +775,7 @@ namespace WpfApp1
                             m_dbConnection.Close();
                         }
                     }
-                    if (gen.getCell(ind % 3, ind / 3) == 9)
+                    if (gen2.getCell(ind % 3, ind / 3) == 9)
                     {
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;
@@ -783,7 +784,7 @@ namespace WpfApp1
                         //запись в нажатую кнопку её номера
                         (buts[i]).Content = 3;
                         kolvopust++;
-                        if ((25 - kolvopust) == kolvomin)
+                        if ((9 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
                             MessageBox.Show("Вы выйграли");
@@ -797,7 +798,7 @@ namespace WpfApp1
                             m_dbConnection.Close();
                         }
                     }
-                    if (gen.getCell(ind % 3, ind / 3) == 10)
+                    if (gen2.getCell(ind % 3, ind / 3) == 10)
                     {
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;
@@ -806,7 +807,7 @@ namespace WpfApp1
                         //запись в нажатую кнопку её номера
                         (buts[i]).Content = 4;
                         kolvopust++;
-                        if ((25 - kolvopust) == kolvomin)
+                        if ((9 - kolvopust) == kolvomin)
                         {
                             Timer.Stop();
                             MessageBox.Show("Вы выйграли");
@@ -820,7 +821,7 @@ namespace WpfApp1
                             m_dbConnection.Close();
                         }
                     }
-                    if (gen.getCell(ind % 3, ind / 3) == 11)
+                    if (gen2.getCell(ind % 3, ind / 3) == 11)
                     {
                         //установка фона нажатой кнопки, цвета и размера шрифта
                         (buts[i]).Background = Brushes.White;
@@ -847,14 +848,14 @@ namespace WpfApp1
             }
             else
 
-            if (gen.getCell(n % 3, n / 3) > 0)
+            if (gen2.getCell(n % 3, n / 3) > 0)
             {
                 //установка фона нажатой кнопки, цвета и размера шрифта
                 ((Button)sender).Background = Brushes.White;
                 ((Button)sender).Foreground = Brushes.Red;
                 ((Button)sender).FontSize = 23;
                 //запись в нажатую кнопку её номера
-                ((Button)sender).Content = gen.getCell(n % 5, n / 5);
+                ((Button)sender).Content = gen2.getCell(n % 3, n / 3);
                 kolvopust++;
                 if ((9 - kolvopust) == kolvomin2)
                 {
@@ -872,7 +873,7 @@ namespace WpfApp1
             }
             else
 
-            if (gen.getCell(n % 3, n / 3) == -1)
+            if (gen2.getCell(n % 3, n / 3) == -1)
             {/*если нажали на мину*/
 
                 Button[] buts = new Button[setka.Children.Count];//массив кнопок
@@ -882,7 +883,7 @@ namespace WpfApp1
                 {
                     int ind = (int)(buts[i]).Tag;//узнаем номер кнопки
 
-                    if (gen.getCell(ind % 3, ind / 3) == -1)
+                    if (gen2.getCell(ind % 3, ind / 3) == -1)
                     {
                         Image img = new Image();
                         img.Source = mine;
