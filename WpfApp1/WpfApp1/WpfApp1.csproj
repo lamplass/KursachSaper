@@ -122,7 +122,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bomb\" />
+    <Resource Include="images\bomb.jpg" />
+    <Resource Include="images\вкл.png" />
+    <Resource Include="images\выкл.png" />
+    <Content Include="sounds\game.wav" />
+    <Content Include="sounds\loser.wav" />
+    <Content Include="sounds\start.wav" />
+    <Content Include="sounds\win.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Старпёр" Height="218" Width="250" Background="#FFFFFFFF" Icon="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images\bomb.jpg">
+        Title="Старпёр" Height="630" Width="745" Background="#FFFFFFFF" Icon="images\bomb.jpg" ResizeMode="NoResize">
 
-    <Grid Margin="0,0,2,-31">
+    <Grid Margin="0,0,0,0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
@@ -16,26 +16,33 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="b1" Content="СТАРТ!" Margin="69,54,0,0" Click="b1_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
-        <UniformGrid Name="setka" Margin="157,30,159,40" Grid.RowSpan="2"/>
-        <Label x:Name="lbtimer" Content="0:0" Margin="91,9,376,0" FontSize="24" FontFamily="Showcard Gothic" Visibility="Hidden" Height="39"  VerticalAlignment="Top" Grid.RowSpan="2"/>
-
-
-        <ListBox x:Name="Lbshow" HorizontalAlignment="Right" Height="200" Margin="0,54,10,0" VerticalAlignment="Top" Visibility="Hidden" Width="167" Grid.Row="1"/>
-        <Button x:Name="tabll" Content="      Таблица Рекордов" Margin="0,29,9,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="27" Visibility="Hidden" HorizontalAlignment="Right" Width="169" Click="Tabll_Click_1"/>
+        <Button x:Name="b1" Content="Средн" Margin="63,153,0,0" Click="b1_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
+        <UniformGrid Name="setka" Margin="209,18,10,52" Grid.RowSpan="2"/>
+        <Label x:Name="lbtimer" Content="0:0" Margin="91,9,376,0" FontSize="24" FontFamily="Showcard Gothic"  Height="39"  VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label x:Name="lbname" Content="Имя" HorizontalAlignment="Left" Margin="25,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="69,18,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="b2" Content="Сложка" Margin="70,94,0,0" Click="b2_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
-        <Button x:Name="b3" Content="Изи" Margin="70,137,0,0" Click="b3_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
-        <Button x:Name="bstart" Content="" Click="Start_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Width="60" Margin="25,303,0,-174.6" Height="50" Foreground="#00000000" BorderBrush="#00000000" Style="{DynamicResource On}">
+        <Button x:Name="b2" Content="Сложка" Margin="62,206,0,-25" Click="b2_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
+        <Button x:Name="b3" Content="Изи" Margin="63,100,0,0" Click="b3_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
+        <Button x:Name="bstart" Content="" Click="Start_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Width="60" Margin="25,530,0,0" Height="50" Foreground="#00000000" BorderBrush="#00000000" Style="{DynamicResource On}" RenderTransformOrigin="0.442,0.47">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images/вкл.png"/>
+                <ImageBrush ImageSource="images/вкл.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="stop" Content=""  Click="Stop_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Visibility="Hidden" Width="60" Margin="25,303,0,-174.6" Height="50" BorderBrush="#00000000" Foreground="#00000000" Style="{DynamicResource Off}">
+        <Button x:Name="stop" Content=""  Click="Stop_Click" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" VerticalAlignment="Top" Width="60" Margin="25,530,0,0" Height="50" BorderBrush="#00000000" Foreground="#00000000" Style="{DynamicResource off}" RenderTransformOrigin="0.517,0.51">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Sergo\source\repos\pyat\KursachSaper\WpfApp1\WpfApp1\images/выкл.png"/>
+                <ImageBrush ImageSource="images/выкл.png"/>
             </Button.Background>
         </Button>
+        <Label Content="Уровень Сложности:" HorizontalAlignment="Left" Grid.RowSpan="2"  FontWeight="Bold" VerticalAlignment="Top" Margin="29,53,0,0"/>
+        <Label Content="   3x3&#xD;&#xA;2 мины" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,98,0,0" Height="39" Width="53"/>
+        <Label Content="   5x5&#xD;&#xA;5 мин" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,151,0,0" Height="39" Width="53"/>
+        <Label Content="   7x7&#xD;&#xA;10 мин" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="9,204,0,0" Height="39" Width="53"/>
+        <DataGrid x:Name="lbshow" HorizontalAlignment="Left" Height="174" Margin="10,286,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="199">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding FormattedLevel}" ClipboardContentBinding="{x:Null}" Header="Уровень"/>
+                <DataGridTextColumn Binding="{Binding FormattedTime}" ClipboardContentBinding="{x:Null}" Header="Время"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
