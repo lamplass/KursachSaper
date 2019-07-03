@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Generator_l
+    class Generator_l       
     {
+        public int kolvomin2;
         public int[,] field;// двумерныфй массив 
         public bool isBroken(int x, int y)
         {/*проверка окружение мин*/
@@ -44,6 +45,32 @@ namespace WpfApp1
             return res;
         }
 
+        public int nummin(int x, int y)
+        {
+            int kolvo = 0;
+
+            int minx = x - 1;
+            if (minx < 0) minx = 0;
+            int miny = y - 1;
+            if (miny < 0) miny = 0;
+
+            int maxx = x + 1;
+            if (maxx > field.GetLength(0) - 1) maxx = field.GetLength(0) - 1;
+            int maxy = y + 1;
+            if (maxy > field.GetLength(1) - 1) maxy = field.GetLength(1) - 1;
+
+            for (int i = minx; i <= maxx; i++)
+            {
+                for (int j = miny; j <= maxy; j++)
+                {
+                    if (field[i, j] == -1)
+                    {
+                        kolvo++;
+                    }
+                }
+            }
+            return kolvo;
+        }
 
         public void init(int n)
         {/*создание поля*/
@@ -52,12 +79,13 @@ namespace WpfApp1
 
         public void plantMines(int n)
         {/*установка мин*/
-            //field = new int[n, n];
+         //field = new int[n, n];
+
             Random kuku = new Random();//функция генерирующая случайное значение
-            if (n > 3)
+            if (n > 6)
                 throw new ArgumentException("МНОГО МИН");
 
-            if (n < 2)
+            if (n < kolvomin2)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
@@ -72,13 +100,19 @@ namespace WpfApp1
                 else
                     field[x, y] = -1;// иначе ставим мину
 
+                if (nummin(x, y) >= 4)
+                {
+                    field[x, y] = 0;
+                    i--;
+                }
+
                 for (int i1 = 0; i1 < field.GetLength(0); i1++)
                 {
                     for (int j1 = 0; j1 < field.GetLength(1); j1++)
                         if (isBroken(x, y) == true)
                         {/*если есть рядом мина*/
                             field[x, y] = 0;//выбранное поле зануляем
-                            i--;//возвращаемся на шаг назад
+                            i++;//возвращаемся на шаг назад
                             break;//выход из цикла
                         }
                     if (field[x, y] == 0) break;//выход из цикла если поле равно 0
@@ -129,8 +163,6 @@ namespace WpfApp1
 
         public void reveal(int i, int j)
         {/*функция открывает вокруг поля без мин*/
-            field = new int [i,j];
-
             if (i >= 0 && j >= 0 && i < (field.GetLength(0)) && j < (field.GetLength(1)))/**/
                 if (field[i, j] == 0)
                 {/*вокруг мин */

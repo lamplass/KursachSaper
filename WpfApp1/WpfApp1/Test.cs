@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 
 namespace WpfApp1
-{ 
+{
     [TestFixture]
     class tasteCase
     {

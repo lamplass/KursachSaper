@@ -3,11 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Media;
+using System.Windows.Controls.Primitives;
+using System.Security;
+using Microsoft.Win32;
+using static System.IO.Path;
 
 namespace WpfApp1
 {
     class Generator_h
     {
+        public int kolvomin1;
         public int[,] field;// двумерныфй массив 
         public bool isBroken(int x, int y)
         {/*проверка окружение мин*/
@@ -44,6 +60,32 @@ namespace WpfApp1
             return res;
         }
 
+        public int nummin(int x, int y)
+        {
+            int kolvo = 0;
+
+            int minx = x - 1;
+            if (minx < 0) minx = 0;
+            int miny = y - 1;
+            if (miny < 0) miny = 0;
+
+            int maxx = x + 1;
+            if (maxx > field.GetLength(0) - 1) maxx = field.GetLength(0) - 1;
+            int maxy = y + 1;
+            if (maxy > field.GetLength(1) - 1) maxy = field.GetLength(1) - 1;
+
+            for (int i = minx; i <= maxx; i++)
+            {
+                for (int j = miny; j <= maxy; j++)
+                {
+                    if (field[i, j] == -1)
+                    {
+                        kolvo++;
+                    }
+                }
+            }
+            return kolvo;
+        }
 
         public void init(int n)
         {/*создание поля*/
@@ -54,10 +96,10 @@ namespace WpfApp1
         {/*установка мин*/
             //field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
-            if (n > 20)
+            if (n > 23)
                 throw new ArgumentException("МНОГО МИН");
 
-            if (n < 10)
+            if (n < kolvomin1)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
@@ -71,6 +113,12 @@ namespace WpfApp1
                 }
                 else
                     field[x, y] = -1;// иначе ставим мину
+
+                if (nummin(x, y) >= 4)
+                {
+                    field[x, y] = 0;
+                    i--;
+                }
 
                 for (int i1 = 0; i1 < field.GetLength(0); i1++)
                 {
@@ -122,10 +170,10 @@ namespace WpfApp1
 
         }
 
-        public int getCell(int i, int j)
+        public int getCell(int u, int h)
         {/*возвращаем знначение поля*/
-            
-            return field[i, j];
+         
+            return field[u, h];
         }
 
         public void reveal(int i, int j)
@@ -134,7 +182,7 @@ namespace WpfApp1
             if (i >= 0 && j >= 0 && i < (field.GetLength(0)) && j < (field.GetLength(1)))/**/
                 if (field[i, j] == 0)
                 {/*вокруг мин */
-                    field[i, j] = 6;
+                    field[i, j] = 20;
 
                     reveal(i, j - 1);
                     reveal(i - 1, j);
@@ -149,25 +197,36 @@ namespace WpfApp1
                 }
                 else if (field[i, j] == 1)
                 {
-                    field[i, j] = 7;
+                    field[i, j] = 21;
                 }
                 else if (field[i, j] == 2)
                 {
-                    field[i, j] = 8;
+                    field[i, j] = 22;
                 }
                 else if (field[i, j] == 3)
                 {
-                    field[i, j] = 9;
+                    field[i, j] = 23;
                 }
                 else if (field[i, j] == 4)
                 {
-                    field[i, j] = 10;
+                    field[i, j] = 24;
                 }
                 else if (field[i, j] == 5)
                 {
-                    field[i, j] = 11;
+                    field[i, j] = 25;
                 }
-
+                else if (field[i, j] == 6)
+                {
+                    field[i, j] = 26;
+                }
+                else if (field[i, j] == 7)
+                {
+                    field[i, j] = 27;
+                }
+                else if (field[i, j] == 8)
+                {
+                    field[i, j] = 28;
+                }
         }
     }
 }

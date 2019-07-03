@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Media;
+using System.Windows.Controls.Primitives;
+using System.Security;
+using Microsoft.Win32;
+using static System.IO.Path;
 
 namespace WpfApp1
 {
     class Generator
     {
+        public int kolvomin;
         public int[,] field;// двумерныфй массив 
+
         public bool isBroken(int x, int y)
         {/*проверка окружение мин*/
             bool res = true;
@@ -44,6 +61,32 @@ namespace WpfApp1
             return res;
         }
 
+        public int nummin(int x, int y)
+        {
+            int kolvo = 0;
+
+            int minx = x - 1;
+            if (minx < 0) minx = 0;
+            int miny = y - 1;
+            if (miny < 0) miny = 0;
+
+            int maxx = x + 1;
+            if (maxx > field.GetLength(0) - 1) maxx = field.GetLength(0) - 1;
+            int maxy = y + 1;
+            if (maxy > field.GetLength(1) - 1) maxy = field.GetLength(1) - 1;
+
+            for (int i = minx; i <= maxx; i++)
+            {
+                for (int j = miny; j <= maxy; j++)
+                {
+                    if (field[i, j] == -1)
+                    {
+                        kolvo++;
+                    }
+                }
+            }
+            return kolvo;
+        }
 
         public void init(int n)
         {/*создание поля*/
@@ -54,10 +97,10 @@ namespace WpfApp1
         {/*установка мин*/
             //field = new int[n, n];
             Random kuku = new Random();//функция генерирующая случайное значение
-            if (n > 10)
-                throw new ArgumentException("МНОГО МИН");
+            if (n > 21)
+                throw new ArgumentException("МНОГО МИН");          
 
-            if (n < 5)
+            if (n < kolvomin)
                 throw new ArgumentException("МАЛО МИН");
 
             for (int i = 0; i < n; i++)
@@ -72,6 +115,12 @@ namespace WpfApp1
                 else
                     field[x, y] = -1;// иначе ставим мину
 
+                if (nummin(x,y) >= 4)
+                {
+                    field[x, y] = 0;
+                    i--;
+                }
+
                 for (int i1 = 0; i1 < field.GetLength(0); i1++)
                 {
                     for (int j1 = 0; j1 < field.GetLength(1); j1++)
@@ -82,7 +131,12 @@ namespace WpfApp1
                             break;//выход из цикла
                         }
                     if (field[x, y] == 0) break;//выход из цикла если поле равно 0
+
+                    
                 }
+
+
+                
             }
         }
 
@@ -123,7 +177,7 @@ namespace WpfApp1
         }
 
         public int getCell(int i, int j)
-        {/*возвращаем знначение поля*/
+        {/*возвращаем значение поля*/
             return field[i, j];
         }
 

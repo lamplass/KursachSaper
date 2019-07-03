@@ -16,33 +16,46 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="b1" Content="Средн" Margin="63,153,0,0" Click="b1_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
+        <Button x:Name="b1" Content="Средний" Margin="63,153,0,0" Click="b1_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="#FFE4F962"/>
         <UniformGrid Name="setka" Margin="209,18,10,52" Grid.RowSpan="2"/>
         <Label x:Name="lbtimer" Content="0:0" Margin="91,9,376,0" FontSize="24" FontFamily="Showcard Gothic"  Height="39"  VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Label x:Name="lbname" Content="Имя" HorizontalAlignment="Left" Margin="25,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="69,18,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="b2" Content="Сложка" Margin="62,206,0,-25" Click="b2_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
-        <Button x:Name="b3" Content="Изи" Margin="63,100,0,0" Click="b3_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="White"/>
+        <Label x:Name="lbname" Content="Имя:" HorizontalAlignment="Left" Margin="30,15,0,0" Grid.RowSpan="2" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="tbname" HorizontalAlignment="Left" Height="23" Margin="69,18,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text=""   />
+        <Button x:Name="b2" Content="Сложный" Margin="62,206,0,-25" Click="b2_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="#FFFF6262"/>
+        <Button x:Name="b3" Content="Легкий" Margin="63,100,0,0" Click="b3_Click" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" Width="97" Height="37" VerticalAlignment="Top" Background="#FFA0FF85"/>
         <Button x:Name="bstart" Content="" Click="Start_Click" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Width="60" Margin="25,530,0,0" Height="50" Foreground="#00000000" BorderBrush="#00000000" Style="{DynamicResource On}" RenderTransformOrigin="0.442,0.47">
             <Button.Background>
-                <ImageBrush ImageSource="images/вкл.png"/>
+                <ImageBrush ImageSource="images/ON.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="stop" Content=""  Click="Stop_Click" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" VerticalAlignment="Top" Width="60" Margin="25,530,0,0" Height="50" BorderBrush="#00000000" Foreground="#00000000" Style="{DynamicResource off}" RenderTransformOrigin="0.517,0.51">
             <Button.Background>
-                <ImageBrush ImageSource="images/выкл.png"/>
+                <ImageBrush ImageSource="images/OFF.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Уровень Сложности:" HorizontalAlignment="Left" Grid.RowSpan="2"  FontWeight="Bold" VerticalAlignment="Top" Margin="29,53,0,0"/>
-        <Label Content="   3x3&#xD;&#xA;2 мины" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,98,0,0" Height="39" Width="53"/>
-        <Label Content="   5x5&#xD;&#xA;5 мин" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,151,0,0" Height="39" Width="53"/>
-        <Label Content="   7x7&#xD;&#xA;10 мин" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="9,204,0,0" Height="39" Width="53"/>
+        <Label Content="Уровень Сложности:" HorizontalAlignment="Left" Grid.RowSpan="2"  FontWeight="Bold" VerticalAlignment="Top" Margin="41,54,0,0"/>
+        <Label Content="   3x3" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,100,0,0" Height="39" Width="53"/>
+        <Label Content="   5x5" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,153,0,0" Height="39" Width="53"/>
+        <Label Content="   7x7" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10,206,0,0" Height="39" Width="53"/>
         <DataGrid x:Name="lbshow" HorizontalAlignment="Left" Height="174" Margin="10,286,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="199">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
-                <DataGridTextColumn Binding="{Binding FormattedLevel}" ClipboardContentBinding="{x:Null}" Header="Уровень"/>
-                <DataGridTextColumn Binding="{Binding FormattedTime}" ClipboardContentBinding="{x:Null}" Header="Время"/>
+                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя     "/>
+                <DataGridTextColumn Binding="{Binding FormattedLevel}" ClipboardContentBinding="{x:Null}" Header="Уровень    "/>
+                <DataGridTextColumn Binding="{Binding FormattedTime}" ClipboardContentBinding="{x:Null}" Header="Время       "/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="bb" Content="Сменить имя" HorizontalAlignment="Left" Margin="41,465,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="128" Click="Button_Click" Height="28" Foreground="Black" BorderBrush="White">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF68FFAD" Offset="0.675"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="tbmin" HorizontalAlignment="Left" Height="28" Margin="165,104,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="44"/>
+        <TextBox x:Name="tbmin2" HorizontalAlignment="Left" Height="28" Margin="165,157,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="44"/>
+        <TextBox x:Name="tbmin1" HorizontalAlignment="Left" Height="28" Margin="165,210,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="12" VerticalAlignment="Top" Width="44"/>
+        <Label Content="поле" HorizontalAlignment="Left" Margin="16,80,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <Label Content="мины" HorizontalAlignment="Left" Margin="165,82,0,0" Grid.RowSpan="2" VerticalAlignment="Top" RenderTransformOrigin="0.646,0.481"/>
     </Grid>
 </Window>
